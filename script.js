@@ -5,16 +5,20 @@ const operators = document.querySelectorAll('.operator')
 const signChange = document.querySelector('.sign-change')
 const clearBtn = document.querySelector('.clear')
 const switchState = document.querySelector('.switch__state');
+const switch_ = document.querySelector('.switch');
 
 let dotsCounter = 0;   // The variable lets no repeat dots     
 let currentNumber = 0; // The variable for the sign changing function
-let isOn = true;
+let isOn = true; // Switch on/off
+
+
+    // Main Handler
 
 elements.forEach(elem => {
     elem.addEventListener('click', e => {
         resultHandler(result, elem);
 
-        if( result.innerText.length > 20) {
+        if( result.innerText.length > 10) {
             result.style.overflowX = 'scroll';
         }
         
@@ -22,12 +26,12 @@ elements.forEach(elem => {
 });
 
     // This button lets to alter a program mode (dark mode/ light mode)
-switchState.addEventListener('click', function(e) {
+    switch_.addEventListener('click', e => {
 
     if (isOn) {
-        this.style.left = '50%';
+        switchState.style.left = '50%';
     } else {
-        this.style.left = '0';
+        switchState.style.left = '0';
     }
     
     toggleClass(document.querySelector('.grid-container'), 'grid-container_dark-mode');
@@ -57,9 +61,7 @@ switchState.addEventListener('click', function(e) {
 
 
 
-
                 // Functions
-
 
 const resultHandler = (result, elem) => {
     if (result.innerText.length == 1 && result.innerText == '0' || result.innerText == '-0') {
@@ -119,6 +121,7 @@ const resultHandler = (result, elem) => {
 }
 
 
+
     // This function prevent repeating an arithmetic signs
 
 const operatorsHandler = (result, elem) => {
@@ -151,6 +154,7 @@ const signChangerFunc = (result) => {
         result.innerText = arr.join('');
     }
 }
+
 
 
 //    Function for adding classes
