@@ -1,0 +1,18 @@
+<svg width="2em" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        *{
+            cursor: pointer;
+        }
+    </style>
+<path d="M10 18L22 9" stroke="black"/>
+<path d="M10 9L22 18" stroke="black"/>
+<rect x="9.5" y="8.5" width="13" height="10" rx="0.5" stroke="black"/>
+<path d="M2.657 13.0734L8.73927 9.35642C9.07245 9.15281 9.5 9.39259 9.5 9.78306V17.2169C9.5 17.6074 9.07245 17.8472 8.73927 17.6436L2.657 13.9266C2.33797 13.7317 2.33797 13.2683 2.657 13.0734Z" stroke="black"/>
+
+    <script>
+        console.dir(document)
+        let svg = document.querySelectorAll('[stroke]');
+        console.log(svg);
+        svg.forEach( item => item.attributes.stroke.nodeValue = "#19D2A1" );
+    </script>
+</svg>

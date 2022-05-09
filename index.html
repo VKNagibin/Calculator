@@ -13,33 +13,36 @@
     <title>Calculator</title>
 </head>
 <body>
-    <header class="header">
-        <div class="switch"><div class="switch__state"></div></div>
-        <p class="result">0</p>
-    </header>
+    <div class="container">
+        <header class="header">
+            <div class="switch"><div class="switch__state"></div></div>
+            <p class="result">0</p>
+        </header>
 
-    <main class="grid-container">
-        <div class="grid-item clear"><span class="grid-item__inner">C</span></div>
-        <div class="grid-item sign-change" title="+"><span class="grid-item__inner">+-</span></div>
-        <div class="grid-item operator" title="%"><span class="grid-item__inner"><i class="fas fa-percent"></i></span></div>
-        <div class="grid-item operator" title="/"><span class="grid-item__inner">/</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">7</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">8</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">9</span></div>
-        <div class="grid-item operator" title="*"><span class="grid-item__inner">*</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">4</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">5</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">6</span></div>
-        <div class="grid-item operator" title="-"><span class="grid-item__inner">-</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">1</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">2</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">3</span></div>
-        <div class="grid-item operator" title="+"><span class="grid-item__inner">+</span></div>
-        <div class="grid-item number"><span class="grid-item__inner">0</span></div>
-        <div class="grid-item dot" title="."><span class="grid-item__inner">.</span></div>
-        <div class="grid-item"><span class="grid-item__inner"></span></div>
-        <div class="grid-item equal"><span class="grid-item__inner">=</span></div>
-    </main>
-
+        <main class="grid-container">
+            <div class="grid-item clear">C</div>
+            <div class="grid-item sign-change" id="+">+-</div>
+            <div class="grid-item operator" id="%">%</div>
+            <div class="grid-item operator" id="/">/</div>
+            <div class="grid-item number">7</div>
+            <div class="grid-item number">8</div>
+            <div class="grid-item number">9</div>
+            <div class="grid-item operator" id="*">X</div>
+            <div class="grid-item number">4</div>
+            <div class="grid-item number">5</div>
+            <div class="grid-item number">6</div>
+            <div class="grid-item operator" id="-">-</div>
+            <div class="grid-item number">1</div>
+            <div class="grid-item number">2</div>
+            <div class="grid-item number">3</div>
+            <div class="grid-item operator" id="+">+</div>
+            <div class="grid-item number">0</div>
+            <div class="grid-item dot" id=".">.</div>
+            <div class="grid-item delete">
+                <object data="./Frame.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="grid-item equal">=</div>
+        </main>
+    </div>
 </body>
 </html>

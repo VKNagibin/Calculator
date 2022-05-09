@@ -1,9 +1,10 @@
 const elements = document.querySelectorAll('.grid-item');
 const numbers = document.querySelectorAll('.number');
 const result = document.querySelector('.result');
-const operators = document.querySelectorAll('.operator')
-const signChange = document.querySelector('.sign-change')
-const clearBtn = document.querySelector('.clear')
+const operators = document.querySelectorAll('.operator');
+const signChange = document.querySelector('.sign-change');
+const deleteBtn = document.querySelector('.delete');
+const clearBtn = document.querySelector('.clear');
 const switchState = document.querySelector('.switch__state');
 const switch_ = document.querySelector('.switch');
 
@@ -11,22 +12,8 @@ let dotsCounter = 0;   // The variable lets no repeat dots
 let currentNumber = 0; // The variable for the sign changing function
 let isOn = true; // Switch on/off
 
-
-    // Main Handler
-
-elements.forEach(elem => {
-    elem.addEventListener('click', e => {
-        resultHandler(result, elem);
-
-        if( result.innerText.length > 10) {
-            result.style.overflowX = 'scroll';
-        }
-        
-    });
-});
-
-    // This button lets to alter a program mode (dark mode/ light mode)
-    switch_.addEventListener('click', e => {
+   // This button lets to alter a program mode (dark mode/ light mode)
+switch_.addEventListener('click', e => {
 
     if (isOn) {
         switchState.style.left = '50%';
@@ -46,6 +33,7 @@ elements.forEach(elem => {
     [...operators, 
         signChange,
         clearBtn,
+        deleteBtn,
         document.querySelector('.header')]
             .forEach(elem => {
                 toggleClass(elem, 'dark-mode-bg');
@@ -60,8 +48,7 @@ elements.forEach(elem => {
 })
 
 
-
-                // Functions
+                // Handler for all click cases
 
 const resultHandler = (result, elem) => {
     if (result.innerText.length == 1 && result.innerText == '0' || result.innerText == '-0') {
@@ -78,22 +65,21 @@ const resultHandler = (result, elem) => {
                 currentNumber = 0;
                 break;
             case (elem.classList.contains('operator')) : 
-                result.innerText += elem.title;
+                result.innerText += elem.id;
                 dotsCounter = 0;
                 break;
             case (elem.classList.contains('dot')) : 
-                result.innerText += elem.title;
+                result.innerText += elem.id;
                 dotsCounter++;
                 break;
             case (elem.classList.contains('sign-change')) : 
-                
                 break;
         }   
     } else {
         switch(true) {
             case (elem.classList.contains('dot')) :
                 if (dotsCounter == 0) {
-                    result.innerText = result.innerText + elem.title;
+                    result.innerText = result.innerText + elem.id;
                     dotsCounter++;
                 }
                 break;
@@ -116,11 +102,13 @@ const resultHandler = (result, elem) => {
             case (elem.classList.contains('operator')) : 
                 operatorsHandler(result, elem);
                 break;
+            case (elem.classList.contains('delete')) : 
+                result.innerText = result.innerText.length === 1 ?  0 :
+                result.innerText.substr(0, result.innerText.length - 1);
+                break;
         }
     }
 }
-
-
 
     // This function prevent repeating an arithmetic signs
 
@@ -128,16 +116,14 @@ const operatorsHandler = (result, elem) => {
     if (!parseInt (result.innerText[result.innerText.length - 1]) && parseInt (result.innerText[result.innerText.length - 1]) !== 0) {
         let arr = result.innerText.split("");
         arr.pop();
-        arr.push(elem.title);
+        arr.push(elem.id);
         result.innerText = arr.join("");
     } else {
-        result.innerText += elem.title;
+        result.innerText += elem.id;
     }
     currentNumber = result.innerText.length;
     dotsCounter = 0;
 }
-
-
 
 
     // This function uses for changing sign (+-)
@@ -156,9 +142,24 @@ const signChangerFunc = (result) => {
 }
 
 
-
 //    Function for adding classes
 
 const toggleClass = (elem, class_) => {
     elem.classList.toggle(`${class_}`);
 };
+
+
+    // Main Handler
+
+elements.forEach(elem => {
+    elem.addEventListener('click', e => {
+        resultHandler(result, elem);
+
+        if( result.innerText.length > 10) {
+            result.style.overflowX = 'scroll';
+        }
+        
+    });
+});
+
+ 
