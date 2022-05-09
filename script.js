@@ -47,7 +47,6 @@ switch_.addEventListener('click', e => {
     isOn = !isOn;
 })
 
-
                 // Handler for all click cases
 
 const resultHandler = (result, elem) => {
